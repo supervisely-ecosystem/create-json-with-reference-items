@@ -51,11 +51,12 @@ YOu can go to Team Files -> `/reference_items` directory. All JSONs are saved th
 ## JSON Format
 
 Here is the example:
+
 ```json
 {
   "project_id": 1219,
   "project_name": "grocery_products",
-  "project_url": "http://78.46.75.100:38585/projects/1219/datasets",
+  "project_url": "http://supervise.ly/projects/1219/datasets",
   "reference_tag_name": "ref",
   "key_tag_name": "UPC",
   "all_keys": [
@@ -82,7 +83,7 @@ Here is the example:
         "image_id": 368151,
         "image_name": "IMG_4451.jpeg",
         "dataset_name": "ds1",
-        "image_preview_url": "http://78.46.75.100:38585/app/images/65/99/1219/1476#image-368151",
+        "image_preview_url": "http://supervise.ly/app/images/65/99/1219/1476#image-368151",
         "image_url": "http://supervise.ly/abcd.jpg",
         "UPC": "123",
         "bbox": [
