@@ -10,7 +10,7 @@
   "main_script": "src/main.py",
   "modal_template": "src/modal.html",
   "modal_template_state": {
-    "tagName": "",
+    "tagName": "123",
     "keyTagName": ""
   },
   "task_location": "workspace_tasks",
