@@ -9,6 +9,10 @@
   "docker_image": "supervisely/base-py-sdk:6",
   "main_script": "src/main.py",
   "modal_template": "src/modal.html",
+  "modal_template_state": {
+    "tagName": "",
+    "keyTagName": ""
+  },
   "task_location": "workspace_tasks",
   "icon": "https://img.icons8.com/color/96/000000/product-documents.png",
   "icon_background": "#FFFFFF",
