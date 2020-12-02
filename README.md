@@ -5,7 +5,7 @@
 
 <p align="center">
   <a href="#Overview">Overview</a> •
-  <a href="#How-To-Run">How To Run</a>
+  <a href="#How-To-Run">How To Use</a>
 </p>
 
 
@@ -28,4 +28,20 @@ If you already have items catagol we recommend you to convert it into the format
 
 <img src="https://i.imgur.com/OrLDCxg.png" width="450px"/>
 
+## How To Use
 
+**Step 1:** Add app to your team from Ecosystem if it is not there.
+
+**Step 2:** Run app from the context menu of project
+
+<img src="https://i.imgur.com/78nH5U0.png" width="500px"/>
+
+**Step 3:** Fill in the fields in modal window and press `Run` button
+
+**Step 4:** Wait until the task is finished, JSON will be created and saved to team file, find link to it in task output
+
+<img src="https://i.imgur.com/xG3gRbz.png"/>
+
+YOu can go to Team Files -> `/reference_items` directory. All JSONs are saved there.
+
+**Step 5:** All warnings and errors can be found in task log
