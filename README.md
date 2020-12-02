@@ -26,3 +26,6 @@ For example, in retail labeling there may be thousands of unique  UPC codes ([Un
 
 If you already have items catagol we recommend you to convert it into the format described here: it will allow you to use other tagging/classification apps from [Ecosystem](https://ecosystem.supervise.ly/). 
 
+<img src="https://i.imgur.com/OrLDCxg.png" width="400px"/>
+
+
