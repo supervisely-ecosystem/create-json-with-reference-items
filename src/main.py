@@ -21,6 +21,12 @@ def read_and_validate_project_meta():
     meta_json = my_app.public_api.project.get_meta(PROJECT_ID)
     META = sly.ProjectMeta.from_json(meta_json)
 
+    if TAG_NAME == "":
+        raise ValueError("Reference tag name is not defined")
+
+    if KEY_TAG_NAME == "":
+        raise ValueError("Key tag name is not defined")
+
     for name in [TAG_NAME, KEY_TAG_NAME]:
         tag_meta = META.get_tag_meta(name)
         if tag_meta is None:
