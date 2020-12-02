@@ -16,6 +16,8 @@ PROJECT = None
 META: sly.ProjectMeta = None
 
 
+@my_app.callback("create_user_from_csv")
+@sly.timeit
 def read_and_validate_project_meta():
     global META
     meta_json = my_app.public_api.project.get_meta(PROJECT_ID)
@@ -33,7 +35,7 @@ def read_and_validate_project_meta():
             raise ValueError("Tag {!r} not found in project {!r}".format(name, PROJECT.name))
 
 
-def main():
+def create_reference_file():
     global PROJECT, JSON_PATH_REMOTE
     api: sly.Api = my_app.public_api
 
@@ -100,8 +102,21 @@ def main():
     sly.json.dump_json_file(result, file_local)
     api.file.upload(TEAM_ID, file_local, file_remote)
     my_app.logger.info("Local file successfully uploaded to team files")
+    my_app.stop()
+
+
+def main():
+    sly.logger.info("Script arguments", extra={
+        "TEAM_ID": TEAM_ID,
+        "WORKSPACE_ID": WORKSPACE_ID,
+        "PROJECT_ID": PROJECT_ID,
+        "modal.state.keyTagName": KEY_TAG_NAME,
+        "modal.state.tagName": TAG_NAME
+    })
+
+    # Run application service
+    my_app.run(initial_events=[{"command": "create_reference_file"}])
 
 
 if __name__ == "__main__":
-    main()
-    #sly.main_wrapper("main", main)
+    sly.main_wrapper("main", main)
