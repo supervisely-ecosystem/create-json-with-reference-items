@@ -1,5 +1,5 @@
 <div align="center" markdown>
-<img src="https://i.imgur.com/PW7XvLv.png"/>
+<img src="https://i.imgur.com/Njx02pY.png"/>
 
 # Create catalog with reference items
 
