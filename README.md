@@ -114,4 +114,13 @@ Here is the example:
 }
 ```
 
+Fields, that are optional and saved for information puposes only (just in case):
+- `project_id` (optional) - id of the original project
+- `project_name` (optional) - name of the original project
+- `project_url` (optional) - url to the original project
+- `reference_tag_name` (optional) - this tag is used to find reference objects (in our example we used tag `ref`)
 
+
+Mandatory fields:
+- `key_tag_name` - tag that is on every reference object and is used to group them (in our example we used tag `UPC`)
+- `all_keys` - list of all possible keys (names of the groups) - this array contains all used values of tag defined in `key_tag_name` field. In our example tag `UPC` has only two values: `123` and `777`    
