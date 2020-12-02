@@ -4,14 +4,14 @@
         <sly-icon slot="icon" :options="{ color: '#ceadff', bgColor: '#f6ebff', rounded: false }">
             <i class="zmdi zmdi-label"></i>
         </sly-icon>
-        <el-input placeholder="Input reference tag name" v-model="state.resultProjectName"></el-input>
+        <el-input placeholder="Input reference tag name" v-model="state.tagName"></el-input>
     </sly-field>
   <sly-field title="Key Tag Name"
              description="All reference objects should have this tag. Tag value is used to group reference items. For example: in retail it can be a UPC Code">
         <sly-icon slot="icon" :options="{ color: '#ea9d22', bgColor: '#fcefd9', rounded: false }">
             <i class="zmdi zmdi-key"></i>
         </sly-icon>
-        <el-input placeholder="Input key tag name" v-model="state.resultProjectName"></el-input>
+        <el-input placeholder="Input key tag name" v-model="state.keyTagName"></el-input>
     </sly-field>
     <sly-field title="Path to JSON file with reference items"
              description="File is saved to team files:
