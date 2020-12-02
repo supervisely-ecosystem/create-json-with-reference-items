@@ -114,18 +114,18 @@ Here is the example:
 }
 ```
 
-Fields, that are optional and saved for information puposes only (just in case):
+**Optional top level fields**, they are used for information puposes only (just in case):
 - `project_id` (optional) - id of the original project
 - `project_name` (optional) - name of the original project
 - `project_url` (optional) - url to the original project
 - `reference_tag_name` (optional) - this tag is used to find reference objects (in our example we used tag `ref`)
 
-Mandatory fields:
+**Mandatory** fields:
 - `key_tag_name` - tag that is on every reference object and is used to group them (in our example we used tag `UPC`)
 - `all_keys` - list of all possible keys (names of the groups) - this array contains all used values of tag defined in `key_tag_name` field. In our example tag `UPC` has only two values: `123` and `777`    
 - `references` - object (in python world it is also named as dictionary), object fields are from `all_keys` list, and value is the list of reference items
 
-Reference item object (many optional fields are used only for information purposes):
+**Reference item** object (many optional fields are used only for information purposes):
 - `image_id` (optional) - id of the image in Supervisely platform,
 - `image_name` (optional)  - name of the image in Supervisely platform,
 - `dataset_name` (optional) - name of the dataset where image is located
