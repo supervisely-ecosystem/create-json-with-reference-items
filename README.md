@@ -20,9 +20,9 @@
 
 ## Overview
 
-Classification and tagging tasks become complex when you deal with large items catalogs (hundreds or thouthands of classes). This app transforms labeled project to JSON file with reference items: user has to define `reference tag name` (objects with this tag will be considered as reference) and `key tag name` (value of this tag on object is used to group reference items). 
+Classification and tagging tasks become complex when you deal with large items catalogs (hundreds or thousands of classes). This app transforms labeled project to JSON file with reference items: user has to define `reference tag name` (objects with this tag will be considered as reference) and `key tag name` (value of this tag on object is used to group reference items). 
 
-For example, in retail labeling there may be thouthands of unique  UPC codes ([Universal Product Code](https://en.wikipedia.org/wiki/Universal_Product_Code)). Labelers can assign tag `ref` to objects that have to be references. Multiple reference items for the same key (`UPC code`) are allowed. These reference objects will be grouped by the value of `key tag name`.
+For example, in retail labeling there may be thousands of unique  UPC codes ([Universal Product Code](https://en.wikipedia.org/wiki/Universal_Product_Code)). Labelers can assign tag `ref` to objects that have to be references. Multiple reference items for the same key (`UPC code`) are allowed. These reference objects will be grouped by the value of `key tag name` (e.g. `UPC code`).
 
 If you already have items catagol we recommend you to convert it into the format described here: it will allow you to use other tagging/classification apps from [Ecosystem](https://ecosystem.supervise.ly/). 
 
