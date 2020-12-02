@@ -5,7 +5,8 @@
 
 <p align="center">
   <a href="#Overview">Overview</a> •
-  <a href="#How-To-Run">How To Use</a>
+  <a href="#How-To-Run">How To Use</a> •
+  <a href="#JSON-Format">JSON Format</a>
 </p>
 
 
@@ -45,3 +46,71 @@ If you already have items catagol we recommend you to convert it into the format
 YOu can go to Team Files -> `/reference_items` directory. All JSONs are saved there.
 
 **Step 5:** All warnings and errors can be found in task log
+
+
+## JSON Format
+
+Here is the example:
+```json
+{
+  "project_id": 1219,
+  "project_name": "grocery_products",
+  "project_url": "http://78.46.75.100:38585/projects/1219/datasets",
+  "reference_tag_name": "ref",
+  "key_tag_name": "UPC",
+  "all_keys": [
+    "123",
+    "777"
+  ],
+  "references": {
+    "123": [
+      {
+        "image_id": 368147,
+        "image_name": "IMG_1836.jpeg",
+        "dataset_name": "ds1",
+        "image_preview_url": "http://supervise.ly/app/images/65/99/1219/1476#image-368147",
+        "image_url": "http://supervise.ly/abcd.jpg",
+        "UPC": "123",
+        "bbox": [
+          122,
+          569,
+          273,
+          706
+        ]
+      },
+      {
+        "image_id": 368151,
+        "image_name": "IMG_4451.jpeg",
+        "dataset_name": "ds1",
+        "image_preview_url": "http://78.46.75.100:38585/app/images/65/99/1219/1476#image-368151",
+        "image_url": "http://supervise.ly/abcd.jpg",
+        "UPC": "123",
+        "bbox": [
+          100,
+          249,
+          286,
+          421
+        ]
+      }
+    ],
+    "777": [
+      {
+        "image_id": 368150,
+        "image_name": "IMG_0748.jpeg",
+        "dataset_name": "ds1",
+        "image_preview_url": "http://supervise.ly/app/images/65/99/1219/1476#image-368150",
+        "image_url": "http://supervise.ly/abcd.jpg",
+        "UPC": "777",
+        "bbox": [
+          120,
+          531,
+          380,
+          811
+        ]
+      }
+    ]
+  }
+}
+```
+
+
