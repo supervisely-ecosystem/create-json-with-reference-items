@@ -98,8 +98,14 @@ def create_reference_file(api: sly.Api, task_id, context, state, app_logger):
     app_logger.info("Local file path: {!r}".format(file_local))
     sly.fs.ensure_base_path(file_local)
     sly.json.dump_json_file(result, file_local)
-    api.file.upload(TEAM_ID, file_local, file_remote)
+    file_info = api.file.upload(TEAM_ID, file_local, file_remote)
+    api.task._set_custom_output(task_id, file_info.id, sly.fs.get_file_name_with_ext(file_remote),
+                                description="JSON with reference items", icon="zmdi zmdi-collection-text")
+    #zmdi-receipt
+    #zmdi-ungroup
+    #zmdi-collection-text
     app_logger.info("Local file successfully uploaded to team files")
+
     my_app.stop()
 
 
