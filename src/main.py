@@ -16,8 +16,6 @@ PROJECT = None
 META: sly.ProjectMeta = None
 
 
-@my_app.callback("create_user_from_csv")
-@sly.timeit
 def read_and_validate_project_meta():
     global META
     meta_json = my_app.public_api.project.get_meta(PROJECT_ID)
@@ -35,15 +33,16 @@ def read_and_validate_project_meta():
             raise ValueError("Tag {!r} not found in project {!r}".format(name, PROJECT.name))
 
 
-def create_reference_file():
+@my_app.callback("create_reference_file")
+@sly.timeit
+def create_reference_file(api: sly.Api, task_id, context, state, app_logger):
     global PROJECT, JSON_PATH_REMOTE
-    api: sly.Api = my_app.public_api
 
     PROJECT = api.project.get_info_by_id(PROJECT_ID)
     read_and_validate_project_meta()
 
     file_remote = "/reference_items/{}_{}.json".format(PROJECT.id, PROJECT.name)
-    my_app.logger.info("Remote file path: {!r}".format(file_remote))
+    app_logger.info("Remote file path: {!r}".format(file_remote))
     if api.file.exists(TEAM_ID, file_remote):
         raise FileExistsError("File {!r} already exists in Team Files. Make sure you want to replace it. "
                               "Please, remove it manually and run the app again."
@@ -59,7 +58,7 @@ def create_reference_file():
         "references": defaultdict(list)
     }
 
-    progress = sly.Progress("Processing", PROJECT.images_count, ext_logger=my_app.logger)
+    progress = sly.Progress("Processing", PROJECT.images_count, ext_logger=app_logger)
     for dataset in api.dataset.get_list(PROJECT.id):
         ds_images = api.image.get_list(dataset.id)
         for batch in sly.batched(ds_images):
@@ -77,7 +76,7 @@ def create_reference_file():
 
                     key_tag = label.tags.get(KEY_TAG_NAME)
                     if key_tag is None:
-                        my_app.logger.warn("Object has reference tag, but doesn't have key tag. Object is skipped",
+                        app_logger.warn("Object has reference tag, but doesn't have key tag. Object is skipped",
                                            extra={"figure_id": label.geometry.sly_id, "image_id": image_id,
                                                   "image_name": image_name, "dataset_name": dataset.name})
                         continue
@@ -97,11 +96,11 @@ def create_reference_file():
 
     result["all_keys"] = list(result["references"].keys())
     file_local = os.path.join(my_app.data_dir, file_remote.lstrip("/"))
-    my_app.logger.info("Local file path: {!r}".format(file_local))
+    app_logger.info("Local file path: {!r}".format(file_local))
     sly.fs.ensure_base_path(file_local)
     sly.json.dump_json_file(result, file_local)
     api.file.upload(TEAM_ID, file_local, file_remote)
-    my_app.logger.info("Local file successfully uploaded to team files")
+    app_logger.info("Local file successfully uploaded to team files")
     my_app.stop()
 
 
