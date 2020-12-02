@@ -3,7 +3,6 @@ from collections import defaultdict
 
 import supervisely_lib as sly
 
-sly.Rectangle.from_json()
 my_app = sly.AppService()
 
 TEAM_ID = int(os.environ['context.teamId'])
@@ -12,7 +11,6 @@ PROJECT_ID = int(os.environ["modal.state.slyProjectId"])
 
 KEY_TAG_NAME = os.environ["modal.state.keyTagName"]
 TAG_NAME = os.environ["modal.state.tagName"]
-JSON_PATH_REMOTE = None
 
 PROJECT = None
 META: sly.ProjectMeta = None
@@ -20,29 +18,33 @@ META: sly.ProjectMeta = None
 
 def read_and_validate_project_meta():
     global META
-    meta_json = my_app.api.project.get_meta(PROJECT_ID)
+    meta_json = my_app.public_api.project.get_meta(PROJECT_ID)
     META = sly.ProjectMeta.from_json(meta_json)
-    tag_meta = META.get_tag_meta(TAG_NAME)
-    if tag_meta is None:
-        raise ValueError("Tag {!r} not found in project {!r}".format(TAG_NAME, PROJECT.name))
+
+    for name in [TAG_NAME, KEY_TAG_NAME]:
+        tag_meta = META.get_tag_meta(name)
+        if tag_meta is None:
+            raise ValueError("Tag {!r} not found in project {!r}".format(name, PROJECT.name))
 
 
 def main():
     global PROJECT, JSON_PATH_REMOTE
-    api: sly.Api = my_app.api
+    api: sly.Api = my_app.public_api
 
-    PROJECT = my_app.api.project.get_info_by_id(PROJECT_ID)
-    if JSON_PATH_REMOTE is None:
-        JSON_PATH_REMOTE = "{}_{}".format(PROJECT.id, PROJECT.name)
-
+    PROJECT = api.project.get_info_by_id(PROJECT_ID)
     read_and_validate_project_meta()
 
-    x = api.project.url()
+    file_remote = "/reference_items/{}_{}.json".format(PROJECT.id, PROJECT.name)
+    my_app.logger.info("Remote file path: {!r}".format(file_remote))
+    if api.file.exists(TEAM_ID, file_remote):
+        raise FileExistsError("File {!r} already exists in Team Files. Make sure you want to replace it. "
+                              "Please, remove it manually and run the app again."
+                              .format(file_remote))
 
     result = {
         "project_id": PROJECT.id,
         "project_name": PROJECT.name,
-        "project_url": api.project.url(),
+        "project_url": api.project.url(PROJECT_ID),
         "reference_tag_name": TAG_NAME,
         "key_tag_name": KEY_TAG_NAME,
         "all_keys": [],
@@ -86,6 +88,12 @@ def main():
             progress.iters_done_report(len(batch))
 
     result["all_keys"] = list(result["references"].keys())
+    file_local = os.path.join(my_app.data_dir, file_remote.lstrip("/"))
+    my_app.logger.info("Local file path: {!r}".format(file_local))
+    sly.fs.ensure_base_path(file_local)
+    sly.json.dump_json_file(result, file_local)
+    api.file.upload(TEAM_ID, file_local, file_remote)
+    my_app.logger.info("Local file successfully uploaded to team files")
 
 
 if __name__ == "__main__":
