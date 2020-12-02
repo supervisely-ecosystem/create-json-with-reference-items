@@ -43,7 +43,9 @@ If you already have items catagol we recommend you to convert it into the format
 
 <img src="https://i.imgur.com/xG3gRbz.png"/>
 
-YOu can go to Team Files -> `/reference_items` directory. All JSONs are saved there.
+You can go to (1) Team Files -> (2) `/reference_items` directory. All JSONs are saved there (3).
+
+<img src="https://i.imgur.com/qgmsVGA.png"/>
 
 **Step 5:** All warnings and errors can be found in task log
 
