@@ -1,12 +1,11 @@
 import os
 from collections import defaultdict
-
 import supervisely_lib as sly
 
 my_app = sly.AppService()
 
-TEAM_ID = int(os.environ['context.teamId'])
-WORKSPACE_ID = int(os.environ['context.workspaceId'])
+TEAM_ID = int(os.environ["context.teamId"])
+WORKSPACE_ID = int(os.environ["context.workspaceId"])
 PROJECT_ID = int(os.environ["modal.state.slyProjectId"])
 
 KEY_TAG_NAME = os.environ["modal.state.keyTagName"]
