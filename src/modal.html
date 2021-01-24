@@ -4,7 +4,7 @@
         <sly-icon slot="icon" :options="{ color: '#ceadff', bgColor: '#f6ebff', rounded: false }">
             <i class="zmdi zmdi-label"></i>
         </sly-icon>
-        <sly-select-tag :project-id="context.projectId" :tags.sync="data.tags" :options="{showLabel: false}"></sly-select-tag>
+        <sly-select-tag :project-id="context.projectId" :tags.sync="state.tags" :options="{showLabel: false}"></sly-select-tag>
     </sly-field>
   <sly-field title="Image Field"
              description="All images with reference objects should have this field in metadata. Field value is used to
@@ -12,7 +12,7 @@
         <sly-icon slot="icon" :options="{ color: '#ea9d22', bgColor: '#fcefd9', rounded: false }">
             <i class="zmdi zmdi-key"></i>
         </sly-icon>
-        <el-input placeholder="Input key tag name" v-model="state.keyTagName"></el-input>
+        <el-input placeholder="Input key image field" v-model="state.keyImageField"></el-input>
     </sly-field>
     <sly-field title="Path to JSON file with reference items"
              description="File is saved to team files:

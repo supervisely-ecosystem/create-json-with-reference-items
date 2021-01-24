@@ -10,8 +10,8 @@
   "main_script": "src/main.py",
   "modal_template": "src/modal.html",
   "modal_template_state": {
-    "tagName": "",
-    "keyTagName": ""
+    "tags": [],
+    "keyImageField": ""
   },
   "task_location": "workspace_tasks",
   "icon": "https://img.icons8.com/color/96/000000/product-documents.png",
