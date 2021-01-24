@@ -6,11 +6,11 @@
     "reference items"
   ],
   "description": "Objects with specific tag will be treated as reference items",
-  "docker_image": "supervisely/base-py-sdk:6",
+  "docker_image": "supervisely/base-py-sdk:6.1.48",
   "main_script": "src/main.py",
   "modal_template": "src/modal.html",
   "modal_template_state": {
-    "tags": [],
+    "tag": "",
     "keyImageField": ""
   },
   "task_location": "workspace_tasks",

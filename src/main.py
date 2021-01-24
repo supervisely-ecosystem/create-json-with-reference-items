@@ -1,4 +1,5 @@
 import os
+import json
 from collections import defaultdict
 import supervisely_lib as sly
 
@@ -8,8 +9,8 @@ TEAM_ID = int(os.environ["context.teamId"])
 WORKSPACE_ID = int(os.environ["context.workspaceId"])
 PROJECT_ID = int(os.environ["modal.state.slyProjectId"])
 
-KEY_TAG_NAME = os.environ["modal.state.keyTagName"]
-TAG_NAME = os.environ["modal.state.tagName"]
+KEY_IMAGE_FIELD = os.environ["modal.state.keyImageField"]
+TAG_NAME = os.environ["modal.state.tag"]
 
 PROJECT = None
 META: sly.ProjectMeta = None
@@ -19,17 +20,10 @@ def read_and_validate_project_meta():
     global META
     meta_json = my_app.public_api.project.get_meta(PROJECT_ID)
     META = sly.ProjectMeta.from_json(meta_json)
-
     if TAG_NAME == "":
         raise ValueError("Reference tag name is not defined")
-
-    if KEY_TAG_NAME == "":
-        raise ValueError("Key tag name is not defined")
-
-    for name in [TAG_NAME, KEY_TAG_NAME]:
-        tag_meta = META.get_tag_meta(name)
-        if tag_meta is None:
-            raise ValueError("Tag {!r} not found in project {!r}".format(name, PROJECT.name))
+    if KEY_IMAGE_FIELD == "":
+        raise ValueError("Key image field is not defined")
 
 
 @my_app.callback("create_reference_file")
@@ -52,7 +46,7 @@ def create_reference_file(api: sly.Api, task_id, context, state, app_logger):
         "project_name": PROJECT.name,
         "project_url": api.project.url(PROJECT_ID),
         "reference_tag_name": TAG_NAME,
-        "key_tag_name": KEY_TAG_NAME,
+        "KEY_IMAGE_FIELD": KEY_IMAGE_FIELD,
         "all_keys": [],
         "references": defaultdict(list)
     }
@@ -73,9 +67,9 @@ def create_reference_file(api: sly.Api, task_id, context, state, app_logger):
                     if tag is None:
                         continue
 
-                    key_tag = label.tags.get(KEY_TAG_NAME)
+                    key_tag = image_info.meta.get(KEY_IMAGE_FIELD)
                     if key_tag is None:
-                        app_logger.warn("Object has reference tag, but doesn't have key tag. Object is skipped",
+                        app_logger.warn("Object has reference tag, but image doesn't have key field. Object is skipped",
                                            extra={"figure_id": label.geometry.sly_id, "image_id": image_id,
                                                   "image_name": image_name, "dataset_name": dataset.name})
                         continue
@@ -87,10 +81,11 @@ def create_reference_file(api: sly.Api, task_id, context, state, app_logger):
                         "dataset_name": dataset.name,
                         "image_preview_url": api.image.url(TEAM_ID, WORKSPACE_ID, PROJECT.id, dataset.id, image_id),
                         "image_url": image_info.full_storage_url,
-                        KEY_TAG_NAME: key_tag.value,
-                        "bbox": [rect.top, rect.left, rect.bottom, rect.right]
+                        KEY_IMAGE_FIELD: key_tag,
+                        "bbox": [rect.top, rect.left, rect.bottom, rect.right],
+                        "geometry": label.geometry.to_json()
                     }
-                    result["references"][key_tag.value].append(reference)
+                    result["references"][key_tag].append(reference)
             progress.iters_done_report(len(batch))
 
     result["all_keys"] = list(result["references"].keys())
@@ -114,7 +109,7 @@ def main():
         "TEAM_ID": TEAM_ID,
         "WORKSPACE_ID": WORKSPACE_ID,
         "PROJECT_ID": PROJECT_ID,
-        "modal.state.keyTagName": KEY_TAG_NAME,
+        "modal.state.keyImageField": KEY_IMAGE_FIELD,
         "modal.state.tagName": TAG_NAME
     })
 

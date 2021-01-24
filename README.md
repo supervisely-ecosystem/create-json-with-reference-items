@@ -109,7 +109,27 @@ Here is the example:
           531,
           380,
           811
-        ]
+        ],
+        "geometry": {
+            "points": {
+                "exterior": [
+                    [
+                        151,
+                        211
+                    ],
+                    [
+                        296,
+                        390
+                    ]
+                ],
+                "interior": []
+            },
+            "labelerLogin": "max",
+            "updatedAt": "2020-11-24T15:16:26.618Z",
+            "createdAt": "2020-11-24T15:15:31.892Z",
+            "id": 6119695,
+            "classId": 18318
+        }
       }
     ]
   }
@@ -135,3 +155,4 @@ Here is the example:
 - `image_url` - direct url to the image (this url will be used to show and download image in other tagging/classification apps)
 - `UPC` (on your custom case it may differ) - it is a value that is defined in field `key_tag_name` and the value of this fields is a name of group of reference objects
 - `bbox` - object bounding box (can be an empty list or `null`) - [`top`, `left`, `bottom`, `right`] coordinates of the bounding box of the object. if the field is empty - then entire image is used as reference object
+- `geometry` - object in Supervisely JSON format
