@@ -4,7 +4,7 @@
         <sly-icon slot="icon" :options="{ color: '#ceadff', bgColor: '#f6ebff', rounded: false }">
             <i class="zmdi zmdi-label"></i>
         </sly-icon>
-        <sly-select-tag :project-id="context.projectId" :tags.sync="data.tags" :showLabel="false"></sly-select-tag>
+        <sly-select-tag :project-id="context.projectId" :tags.sync="data.tags" :options="{showLabel: false}"></sly-select-tag>
     </sly-field>
   <sly-field title="Image Field"
              description="All images with reference objects should have this field in metadata. Field value is used to
