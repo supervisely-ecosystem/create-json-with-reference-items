@@ -46,7 +46,7 @@ def create_reference_file(api: sly.Api, task_id, context, state, app_logger):
         "project_name": PROJECT.name,
         "project_url": api.project.url(PROJECT_ID),
         "reference_tag_name": TAG_NAME,
-        "KEY_IMAGE_FIELD": KEY_IMAGE_FIELD,
+        "key_image_field": KEY_IMAGE_FIELD,
         "all_keys": [],
         "references": defaultdict(list)
     }
