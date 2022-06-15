@@ -96,7 +96,7 @@ def create_reference_file(api: sly.Api, task_id, context, state, app_logger):
     sly.json.dump_json_file(result, file_local)
     file_info = api.file.upload(TEAM_ID, file_local, file_remote)
     api.task._set_custom_output(task_id, file_info.id, sly.fs.get_file_name_with_ext(file_remote),
-                                description="JSON with reference items", icon="zmdi zmdi-collection-text")
+                                description="JSON with reference items", icon="zmdi zmdi-collection-text", download=True)
     #zmdi-receipt
     #zmdi-ungroup
     #zmdi-collection-text
