@@ -1,9 +1,10 @@
 import os
 import json
 from collections import defaultdict
-import supervisely_lib as sly
+import supervisely as sly
+from supervisely.app.v1.app_service import AppService
 
-my_app = sly.AppService()
+my_app: AppService = AppService()
 
 TEAM_ID = int(os.environ["context.teamId"])
 WORKSPACE_ID = int(os.environ["context.workspaceId"])
@@ -80,7 +81,7 @@ def create_reference_file(api: sly.Api, task_id, context, state, app_logger):
                         "image_name": image_name,
                         "dataset_name": dataset.name,
                         "image_preview_url": api.image.url(TEAM_ID, WORKSPACE_ID, PROJECT.id, dataset.id, image_id),
-                        "image_url": image_info.full_storage_url,
+                        "image_url": image_info.path_original,
                         KEY_IMAGE_FIELD: key_tag,
                         "bbox": [rect.top, rect.left, rect.bottom, rect.right],
                         "geometry": label.geometry.to_json()
@@ -95,7 +96,7 @@ def create_reference_file(api: sly.Api, task_id, context, state, app_logger):
     sly.json.dump_json_file(result, file_local)
     file_info = api.file.upload(TEAM_ID, file_local, file_remote)
     api.task._set_custom_output(task_id, file_info.id, sly.fs.get_file_name_with_ext(file_remote),
-                                description="JSON with reference items", icon="zmdi zmdi-collection-text")
+                                description="JSON with reference items", icon="zmdi zmdi-collection-text", download=True)
     #zmdi-receipt
     #zmdi-ungroup
     #zmdi-collection-text
