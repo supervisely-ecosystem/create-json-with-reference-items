@@ -1,5 +1,5 @@
 <div align="center" markdown>
-<img src="https://i.imgur.com/Njx02pY.png"/>
+<img src="https://user-images.githubusercontent.com/106374579/182887484-5f79272a-99e5-4bc2-b2e3-a2c9595d1ccc.png"/>
 
 # Create catalog with reference items
 
