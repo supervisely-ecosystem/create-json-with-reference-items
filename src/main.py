@@ -35,7 +35,8 @@ def create_reference_file(api: sly.Api, task_id, context, state, app_logger):
     PROJECT = api.project.get_info_by_id(PROJECT_ID)
     read_and_validate_project_meta()
 
-    file_remote = "/reference_items/{}_{}.json".format(PROJECT.id, PROJECT.name)
+    file_remote = os.path.join(
+        sly.team_files.RECOMMENDED_EXPORT_PATH, "reference_items/{}_{}.json".format(PROJECT.id, PROJECT.name))
     app_logger.info("Remote file path: {!r}".format(file_remote))
     if api.file.exists(TEAM_ID, file_remote):
         raise FileExistsError("File {!r} already exists in Team Files. Make sure you want to replace it. "
