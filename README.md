@@ -26,7 +26,7 @@ For example, in retail labeling there may be thousands of unique  UPC codes ([Un
 
 If you already have items catagol we recommend you to convert it into the format described here: it will allow you to use other tagging/classification apps from [Ecosystem](https://ecosystem.supervise.ly/). 
 
-<img src="https://i.imgur.com/OrLDCxg.png" width="450px"/>
+<img src="media/overview.png" width="450px"/>
 
 ## How To Use
 
@@ -34,17 +34,17 @@ If you already have items catagol we recommend you to convert it into the format
 
 **Step 2:** Run app from the context menu of project
 
-<img src="https://i.imgur.com/78nH5U0.png" width="500px"/>
+<img src="media/ht2.png" width="500px"/>
 
 **Step 3:** Fill in the fields in modal window and press `Run` button
 
 **Step 4:** Wait until the task is finished, JSON will be created and saved to team file, find link to it in task output
 
-<img src="https://i.imgur.com/xG3gRbz.png"/>
+<img src="media/ht4.png"/>
 
 You can go to (1) Team Files -> (2) `/reference_items` directory. All JSONs are saved there (3).
 
-<img src="https://i.imgur.com/qgmsVGA.png"/>
+<img src="media/ht4a.png"/>
 
 **Step 5:** All warnings and errors can be found in task log
 
