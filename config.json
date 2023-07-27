@@ -1,28 +1,28 @@
 {
-  "name": "Create JSON with reference items",
-  "type": "app",
-  "categories": [
-    "images",
-    "export"
-  ],
-  "description": "Objects with specific tag will be treated as reference items",
-  "docker_image": "supervisely/base-py-sdk:6.72.70",
-  "instance_version": "6.4.57",
-  "main_script": "src/main.py",
-  "modal_template": "src/modal.html",
-  "modal_template_state": {
-    "tag": "",
-    "keyImageField": ""
-  },
-  "task_location": "workspace_tasks",
-  "icon": "https://img.icons8.com/color/96/000000/product-documents.png",
-  "icon_background": "#FFFFFF",
-  "headless": true,
-  "disable_stop": true,
-  "context_menu": {
-    "target": [
-      "images_project"
-    ]
-  },
-  "poster": "https://user-images.githubusercontent.com/106374579/182887484-5f79272a-99e5-4bc2-b2e3-a2c9595d1ccc.png"
+    "name": "Create JSON with reference items",
+    "type": "app",
+    "categories": [
+        "images",
+        "export"
+    ],
+    "description": "Objects with specific tag will be treated as reference items",
+    "docker_image": "supervisely/import-export:0.0.1",
+    "instance_version": "6.4.57",
+    "main_script": "src/main.py",
+    "modal_template": "src/modal.html",
+    "modal_template_state": {
+        "tag": "",
+        "keyImageField": ""
+    },
+    "task_location": "workspace_tasks",
+    "icon": "https://img.icons8.com/color/96/000000/product-documents.png",
+    "icon_background": "#FFFFFF",
+    "headless": true,
+    "disable_stop": true,
+    "context_menu": {
+        "target": [
+            "images_project"
+        ]
+    },
+    "poster": "https://user-images.githubusercontent.com/106374579/182887484-5f79272a-99e5-4bc2-b2e3-a2c9595d1ccc.png"
 }
