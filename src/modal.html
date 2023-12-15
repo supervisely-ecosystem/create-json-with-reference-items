@@ -13,6 +13,10 @@
             <i class="zmdi zmdi-key"></i>
         </sly-icon>
         <el-input placeholder="Input key image field" v-model="state.keyImageField"></el-input>
+        <div v-if="!state.keyImageField" class="mt5 mb5">
+            <i class="zmdi zmdi-alert-triangle" style="color: #ed4242"></i>
+            <span style="color: #ed4242">Input field cannot be empty</span>
+        </div>
     </sly-field>
     <sly-field title="Path to JSON file with reference items"
              description="File is saved to team files:
