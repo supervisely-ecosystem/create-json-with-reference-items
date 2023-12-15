@@ -6,8 +6,8 @@
         "export"
     ],
     "description": "Objects with specific tag will be treated as reference items",
-    "docker_image": "supervisely/import-export:0.0.5",
-    "instance_version": "6.4.57",
+    "docker_image": "supervisely/import-export:6.72.216",
+    "min_instance_version": "6.8.48",
     "main_script": "src/main.py",
     "modal_template": "src/modal.html",
     "modal_template_state": {

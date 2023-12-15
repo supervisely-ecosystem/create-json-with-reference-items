@@ -3,3 +3,4 @@ venv
 secret_debug.env
 *.xlsx
 supervisely_lib
+.venv
