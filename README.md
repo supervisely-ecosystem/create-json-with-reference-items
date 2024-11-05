@@ -9,11 +9,11 @@
   <a href="#JSON-Format">JSON Format</a>
 </p>
 
-[![](https://img.shields.io/badge/supervisely-ecosystem-brightgreen)](https://ecosystem.supervise.ly/apps/create-json-with-reference-items)
-[![](https://img.shields.io/badge/slack-chat-green.svg?logo=slack)](https://supervise.ly/slack)
+[![](https://img.shields.io/badge/supervisely-ecosystem-brightgreen)](https://ecosystem.supervisely.com/apps/create-json-with-reference-items)
+[![](https://img.shields.io/badge/slack-chat-green.svg?logo=slack)](https://supervisely.com/slack)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/supervisely-ecosystem/create-json-with-reference-items)
-[![views](https://app.supervise.ly/img/badges/views/supervisely-ecosystem/create-json-with-reference-items.png)](https://supervise.ly)
-[![runs](https://app.supervise.ly/img/badges/runs/supervisely-ecosystem/create-json-with-reference-items.png)](https://supervise.ly)
+[![views](https://app.supervisely.com/img/badges/views/supervisely-ecosystem/create-json-with-reference-items.png)](https://supervisely.com)
+[![runs](https://app.supervisely.com/img/badges/runs/supervisely-ecosystem/create-json-with-reference-items.png)](https://supervisely.com)
 
 </div>
 
@@ -23,7 +23,7 @@ Classification and tagging tasks become complex when you deal with large items c
 
 For example, in retail labeling there may be thousands of unique UPC codes ([Universal Product Code](https://en.wikipedia.org/wiki/Universal_Product_Code)). Labelers can assign tag `ref` to objects that have to be references. Multiple reference items for the same key (`UPC code`) are allowed. These reference objects will be grouped by the value of `key tag name` (e.g. `UPC code`).
 
-If you already have items catagol we recommend you to convert it into the format described here: it will allow you to use other tagging/classification apps from [Ecosystem](https://ecosystem.supervise.ly/).
+If you already have items catagol we recommend you to convert it into the format described here: it will allow you to use other tagging/classification apps from [Ecosystem](https://ecosystem.supervisely.com/).
 
 ℹ️ Use the [Import Metadata](https://ecosystem.supervisely.com/apps/import-metadata) app to add metadata to your images in Supervisely project from JSON file.
 
@@ -57,7 +57,7 @@ Here is the example:
 {
   "project_id": 1219,
   "project_name": "grocery_products",
-  "project_url": "http://supervise.ly/projects/1219/datasets",
+  "project_url": "http://supervisely.com/projects/1219/datasets",
   "reference_tag_name": "ref",
   "key_tag_name": "UPC",
   "all_keys": ["123", "777"],
@@ -67,8 +67,8 @@ Here is the example:
         "image_id": 368147,
         "image_name": "IMG_1836.jpeg",
         "dataset_name": "ds1",
-        "image_preview_url": "http://supervise.ly/app/images/65/99/1219/1476#image-368147",
-        "image_url": "http://supervise.ly/abcd.jpg",
+        "image_preview_url": "http://supervisely.com/app/images/65/99/1219/1476#image-368147",
+        "image_url": "http://supervisely.com/abcd.jpg",
         "UPC": "123",
         "bbox": [122, 569, 273, 706]
       },
@@ -76,8 +76,8 @@ Here is the example:
         "image_id": 368151,
         "image_name": "IMG_4451.jpeg",
         "dataset_name": "ds1",
-        "image_preview_url": "http://supervise.ly/app/images/65/99/1219/1476#image-368151",
-        "image_url": "http://supervise.ly/abcd.jpg",
+        "image_preview_url": "http://supervisely.com/app/images/65/99/1219/1476#image-368151",
+        "image_url": "http://supervisely.com/abcd.jpg",
         "UPC": "123",
         "bbox": [100, 249, 286, 421]
       }
@@ -87,8 +87,8 @@ Here is the example:
         "image_id": 368150,
         "image_name": "IMG_0748.jpeg",
         "dataset_name": "ds1",
-        "image_preview_url": "http://supervise.ly/app/images/65/99/1219/1476#image-368150",
-        "image_url": "http://supervise.ly/abcd.jpg",
+        "image_preview_url": "http://supervisely.com/app/images/65/99/1219/1476#image-368150",
+        "image_url": "http://supervisely.com/abcd.jpg",
         "UPC": "777",
         "bbox": [120, 531, 380, 811],
         "geometry": {
