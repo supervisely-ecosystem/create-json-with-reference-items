@@ -9,7 +9,7 @@
   <a href="#JSON-Format">JSON Format</a>
 </p>
 
-[![](https://img.shields.io/badge/supervisely-ecosystem-brightgreen)](../../../../supervisely-ecosystem/create-json-with-reference-items)
+[![](https://img.shields.io/badge/supervisely-ecosystem-brightgreen)](https://ecosystem.supervisely.com/apps/create-json-with-reference-items)
 [![](https://img.shields.io/badge/slack-chat-green.svg?logo=slack)](https://supervisely.com/slack)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/supervisely-ecosystem/create-json-with-reference-items)
 [![views](https://app.supervisely.com/img/badges/views/supervisely-ecosystem/create-json-with-reference-items.png)](https://supervisely.com)
@@ -25,7 +25,7 @@ For example, in retail labeling there may be thousands of unique UPC codes ([Uni
 
 If you already have items catagol we recommend you to convert it into the format described here: it will allow you to use other tagging/classification apps from [Ecosystem](https://ecosystem.supervisely.com/).
 
-ℹ️ Use the [Import Metadata](../../../../supervisely-ecosystem/import-metadata) app to add metadata to your images in Supervisely project from JSON file.
+ℹ️ Use the [Import Metadata](https://ecosystem.supervisely.com/apps/import-metadata) app to add metadata to your images in Supervisely project from JSON file.
 
 <img src="https://i.imgur.com/OrLDCxg.png" width="450px"/>
 
